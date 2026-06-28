@@ -32,3 +32,9 @@ Run:
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\build.ps1
 ```
+
+## License
+
+Copyright 2026 Ozzy M.
+
+Licensed under the Apache License, Version 2.0.
