@@ -17,7 +17,7 @@ $releaseName = "CoreAutoclicker-$version-win-x64"
 
 if ((Test-Path $clangCl) -and (Test-Path $vcvars)) {
     $ccompile = "`"$vcvars`" >nul && `"$clangCl`" /nologo /TC /O2 /Oi /clang:-Os /GS- /Gy /Gw /D_WIN32_WINNT=0x0601 /DNDEBUG"
-    $clink = "/link /subsystem:windows /entry:WinMainCRTStartup /nodefaultlib kernel32.lib user32.lib gdi32.lib comctl32.lib coreautoclicker.res /opt:ref /opt:icf /incremental:no /Brepro"
+    $clink = "/link /subsystem:windows /entry:win_main_crt_startup /nodefaultlib kernel32.lib user32.lib gdi32.lib comctl32.lib coreautoclicker.res /opt:ref /opt:icf /incremental:no /Brepro"
     Remove-Item -LiteralPath .\CoreAutoclicker.exe,.\coreautoclicker.exe -Force -ErrorAction SilentlyContinue
     Invoke-Checked { cmd /d /s /c "`"$vcvars`" >nul && rc /nologo /fo coreautoclicker.res coreautoclicker.rc" }
     Invoke-Checked { cmd /d /s /c "$ccompile clicker.c $clink /out:$exeName" }
